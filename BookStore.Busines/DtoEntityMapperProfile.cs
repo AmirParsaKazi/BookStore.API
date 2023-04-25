@@ -2,8 +2,10 @@
 using BookStore.Common.Dtos.Author;
 using BookStore.Common.Dtos.Book;
 using BookStore.Common.Dtos.Category;
+using BookStore.Common.Dtos.City;
 using BookStore.Common.Dtos.Discount;
 using BookStore.Common.Dtos.Language;
+using BookStore.Common.Dtos.Province;
 using BookStore.Common.Models;
 using System;
 using System.Collections.Generic;
@@ -95,5 +97,17 @@ public class DtoEntityMapperProfile : Profile
         CreateMap<Discount, DiscountsList>();
         CreateMap<Discount, DiscountGet>()
        .ForMember(dest => dest.Book, opt => opt.Ignore());
+
+
+        CreateMap<ProvinceCreate, Province>()
+          .ForMember(dest => dest.Id,
+            opt => opt.MapFrom(src => Guid.NewGuid().ToString()))
+          .ForMember(dest => dest.Cities, opt => opt.Ignore());
+        CreateMap<ProvinceUpdate, Province>();
+        CreateMap<Province, ProvinceGet>()
+            .ForMember(dest => dest.Cities, opt => opt.Ignore());
+        CreateMap<Province, ProvincesList>();
+
+        CreateMap<City, CitiesListWithoutProvince>();
     }
 }

@@ -33,6 +33,7 @@ builder.Services.AddScoped<ILanguageService, LanguageService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IDiscountService, DiscountService>();
+builder.Services.AddScoped<IProvinceService, ProvinceService>();
 
 
 

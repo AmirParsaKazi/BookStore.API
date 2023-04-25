@@ -4,6 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookStore.Common.Dtos.Province;
+namespace BookStore.Common.Dtos.City;
 
-public record ProvinceCreate(string Name, IEnumerable<string>? CitiesName);
+public record CitiesListWithoutProvince(string Id, string Name);

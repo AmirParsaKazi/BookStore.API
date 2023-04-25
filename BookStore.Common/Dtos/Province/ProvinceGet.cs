@@ -14,5 +14,5 @@ public class ProvinceGet
         this.Name = Name;
     }
     public string Name { get; set; }
-    public IEnumerable<CitiesList> Cities { get; set; }
+    public IEnumerable<CitiesListWithoutProvince> Cities { get; set; }
 }

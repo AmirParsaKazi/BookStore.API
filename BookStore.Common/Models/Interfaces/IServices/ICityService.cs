@@ -12,6 +12,7 @@ public interface ICityService
     Task UpdateCityAsync(CityUpdate cityUpdate);
     Task DeleteCityAsync(CityDelete cityDelete);
     Task<CityGet?> GetCityByIdAsync(string id);
+    Task<CityGetWithoutCustomerInfo?> GetCityByIdWithoutCustomersInfoAsync(string id);
     Task<IEnumerable<CitiesList>> GetCitiesAsync();
     Task<IEnumerable<CitiesList>> GetCitiesByFilter(CitiesGetByFilter citiesGetByFilter);
 }

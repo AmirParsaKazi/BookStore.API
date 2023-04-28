@@ -16,6 +16,6 @@ public class CityGet
     }
     public string Name { get; set; }
     public ProvincesList Province { get; set; }
-    public IEnumerable<CustomersList> customersList1 { get; set; }
-    public IEnumerable<CustomersList> customersList2 { get; set; }
+    public IEnumerable<CustomersListWithoutCity> customersList1 { get; set; }
+    public IEnumerable<CustomersListWithoutCity> customersList2 { get; set; }
 }

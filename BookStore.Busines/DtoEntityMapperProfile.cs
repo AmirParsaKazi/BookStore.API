@@ -3,6 +3,7 @@ using BookStore.Common.Dtos.Author;
 using BookStore.Common.Dtos.Book;
 using BookStore.Common.Dtos.Category;
 using BookStore.Common.Dtos.City;
+using BookStore.Common.Dtos.Customer;
 using BookStore.Common.Dtos.Discount;
 using BookStore.Common.Dtos.Language;
 using BookStore.Common.Dtos.Province;
@@ -108,6 +109,23 @@ public class DtoEntityMapperProfile : Profile
             .ForMember(dest => dest.Cities, opt => opt.Ignore());
         CreateMap<Province, ProvincesList>();
 
+        CreateMap<CityCreate, City>()
+          .ForMember(dest => dest.Id,
+            opt => opt.MapFrom(src => Guid.NewGuid().ToString()))
+          .ForMember(dest => dest.ProvinceId, opt => opt.MapFrom(src => src.ProvinceId));
+        CreateMap<CityUpdate, City>()
+            .ForMember(dest => dest.ProvinceId, opt => opt.MapFrom(src => src.ProvinceId));
+        CreateMap<City, CitiesList>()//TODO:Do other map like this
+             .ForMember(dest => dest.Province, opt => opt.MapFrom(src => src.Province));
+        CreateMap<City, CityGet>()//TODO:Do other map like this
+           .ForMember(dest => dest.Province, opt => opt.MapFrom(src => src.Province))
+           .ForMember(dest => dest.customersList1, opt => opt.MapFrom(src => src.Customers1))
+           .ForMember(dest => dest.customersList2, opt => opt.MapFrom(src => src.Customers2));
+        CreateMap<City, CityGetWithoutCustomerInfo>()//TODO:Do other map like this
+          .ForMember(dest => dest.Province, opt => opt.MapFrom(src => src.Province));
         CreateMap<City, CitiesListWithoutProvince>();
+
+        CreateMap<Customer, CustomersList>();
+        CreateMap<Customer, CustomersListWithoutCity>();
     }
 }

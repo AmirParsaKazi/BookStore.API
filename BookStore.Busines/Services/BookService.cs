@@ -244,7 +244,7 @@ public class BookService : IBookService
 
             if (orderByLanguage != null)
             {
-                orderByLanguage(booksMapped);
+                booksMapped = (List<BooksList>)orderByLanguage(booksMapped);
             }
 
             return booksMapped;

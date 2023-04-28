@@ -118,7 +118,7 @@ public class CityService : ICityService
             var citiesMapped = _mapper.Map<List<CitiesList>>(cities);
             if (orderByProvince != null)
             {
-                orderByProvince(citiesMapped);
+                citiesMapped = (List<CitiesList>)orderByProvince(citiesMapped);
             }
 
             return citiesMapped;

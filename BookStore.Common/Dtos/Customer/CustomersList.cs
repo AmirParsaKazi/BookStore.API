@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 
 namespace BookStore.Common.Dtos.Customer;
 
-public record CustomersList
-    (
-    string Id,
-    string FirstName,
-    string LastName,
-    DateTime? BirthDate,
-    string? Address,
-    string Mobile,
-    string? Image,
-    CitiesList City1,
-    CitiesList? City2
-    );
+public class CustomersList
+{
+    public string Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public DateTime? BirthDate { get; set; }
+    public int? Age { get; set; }
+    public string? Address { get; set; }
+    public string Mobile { get; set; }
+    public string? Image { get; set; }
+    public CitiesList City1 { get; set; }
+    public CitiesList? City2 { get; set; }
+
+
+}

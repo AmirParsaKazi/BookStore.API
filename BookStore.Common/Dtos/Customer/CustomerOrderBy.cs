@@ -12,9 +12,9 @@ public enum CustomerOrderBy
     FirstName,
     LastName,
     BirthDate,
+    Age,
     Address,
     Mobile,
-    Image,
     City1,
     City2
 }

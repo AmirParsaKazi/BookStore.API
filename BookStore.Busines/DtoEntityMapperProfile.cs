@@ -137,6 +137,10 @@ public class DtoEntityMapperProfile : Profile
         CreateMap<Customer, CustomersList>()
             .ForMember(dest => dest.City1, opt => opt.MapFrom(src => src.City1))
            .ForMember(dest => dest.City2, opt => opt.MapFrom(src => src.City2));
+        CreateMap<Customer, CustomerGet>()
+         .ForMember(dest => dest.Orders, opt => opt.MapFrom(src => src.Orders))
+         .ForMember(dest => dest.City1, opt => opt.MapFrom(src => src.City1))
+        .ForMember(dest => dest.City2, opt => opt.MapFrom(src => src.City2));
         CreateMap<Customer, CustomersListWithoutCity>();
 
 
@@ -149,6 +153,8 @@ public class DtoEntityMapperProfile : Profile
         CreateMap<OrderStatus, OrderStatusGet>()
              .ForMember(dest => dest.Orders, opt => opt.MapFrom(src => src.Orders));
 
+        CreateMap<Order, OrdersListForCustomer>()
+            .ForMember(dest => dest.Staus, opt => opt.MapFrom(src => src.Staus));
         CreateMap<Order, OrdersListForOrderStatus>();
     }
 }

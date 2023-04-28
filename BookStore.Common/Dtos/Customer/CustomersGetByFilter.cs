@@ -12,6 +12,7 @@ public record CustomersGetByFilter
     string? FirstName,
     string? LastName,
     BirthDateFilter? BirthDate,
+    AgeFilter? Age,
     string? Address,
     string? Mobile,
     int? Skip,

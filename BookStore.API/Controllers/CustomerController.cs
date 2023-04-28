@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookStore.Busines.Configuration;
 using BookStore.Common.Dtos.Customer;
+using BookStore.Common.Dtos.Province;
 using BookStore.Common.Models;
 using BookStore.Common.Models.Interfaces.IServices;
 using Microsoft.AspNetCore.Http;
@@ -24,6 +25,16 @@ namespace BookStore.API.Controllers
         }
 
         [HttpGet]
+        [Route("GetCustomerById/{Id}")]
+        [ProducesResponseType(typeof(Customer), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetCustomerById(string Id)
+        {
+            var customer = await _service.GetCustomerByIdAsync(Id);
+            return customer == null ? NotFound() : Ok(customer);
+        }
+
+        [HttpGet]
         [Route("Customers")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -37,6 +48,18 @@ namespace BookStore.API.Controllers
             }
             return Ok(customers);
         }
+
+        [HttpGet]
+        [Route("FilterCustomers")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetCustomersByFilter([FromQuery] CustomersGetByFilter customersGetByFilter)
+        {
+            var customers = await _service.GetCustomersByFilter(customersGetByFilter);
+            return Ok(customers);
+        }
+
 
         [HttpPost]
         [Route("CreateCustomer")]

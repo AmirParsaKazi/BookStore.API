@@ -13,6 +13,7 @@ public interface IOrderStatusService
     Task UpdateOrderStatusAsync(OrderStatusUpdate orderStatusUpdate);
     Task DeleteOrderStatusAsync(OrderStatusDelete orderStatusDelete);
     Task<OrderStatusGet?> GetOrderStatusByIdAsync(string id);
+    Task<OrderStatusGetWithoutOrdersInfo?> GetOrderStatusByIdWithoutOrdersInfoAsync(string id);
     Task<IEnumerable<OrderStatusesList>> GetOrderStatusesAsync();
     Task<IEnumerable<OrderStatusesList>> GetOrderStatusesByFilter(OrderStatusesGetByFilter orderStatusesGetByFilter);
 }

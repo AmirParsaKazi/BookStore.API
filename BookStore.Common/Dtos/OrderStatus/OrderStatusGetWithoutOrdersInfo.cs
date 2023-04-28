@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace BookStore.Common.Dtos.OrderStatus;
 
-public class OrderStatusGet
+public class OrderStatusGetWithoutOrdersInfo
 {
-    public OrderStatusGet(string Name)
+    public OrderStatusGetWithoutOrdersInfo(string Name)
     {
         this.Name = Name;
     }
     public string Name { get; set; }
-    public IEnumerable<OrdersListForOrderStatus> Orders { get; set; }
 }

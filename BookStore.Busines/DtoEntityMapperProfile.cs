@@ -6,6 +6,8 @@ using BookStore.Common.Dtos.City;
 using BookStore.Common.Dtos.Customer;
 using BookStore.Common.Dtos.Discount;
 using BookStore.Common.Dtos.Language;
+using BookStore.Common.Dtos.Order;
+using BookStore.Common.Dtos.OrderStatus;
 using BookStore.Common.Dtos.Province;
 using BookStore.Common.Models;
 using System;
@@ -135,7 +137,18 @@ public class DtoEntityMapperProfile : Profile
         CreateMap<Customer, CustomersList>()
             .ForMember(dest => dest.City1, opt => opt.MapFrom(src => src.City1))
            .ForMember(dest => dest.City2, opt => opt.MapFrom(src => src.City2));
-
         CreateMap<Customer, CustomersListWithoutCity>();
+
+
+        CreateMap<OrderStatusCreate, OrderStatus>()
+            .ForMember(dest => dest.Id,
+            opt => opt.MapFrom(src => Guid.NewGuid().ToString()));
+        CreateMap<OrderStatusUpdate, OrderStatus>();
+        CreateMap<OrderStatus, OrderStatusesList>();
+        CreateMap<OrderStatus, OrderStatusGetWithoutOrdersInfo>();
+        CreateMap<OrderStatus, OrderStatusGet>()
+             .ForMember(dest => dest.Orders, opt => opt.MapFrom(src => src.Orders));
+
+        CreateMap<Order, OrdersListForOrderStatus>();
     }
 }

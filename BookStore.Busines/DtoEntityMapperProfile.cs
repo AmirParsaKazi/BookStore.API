@@ -125,7 +125,17 @@ public class DtoEntityMapperProfile : Profile
           .ForMember(dest => dest.Province, opt => opt.MapFrom(src => src.Province));
         CreateMap<City, CitiesListWithoutProvince>();
 
-        CreateMap<Customer, CustomersList>();
+        CreateMap<CustomerCreate, Customer>()
+            .ForMember(dest => dest.Id,
+            opt => opt.MapFrom(src => Guid.NewGuid().ToString()))
+            .ForMember(dest => dest.Age, opt => opt.Ignore());
+        CreateMap<CustomerUpdate, Customer>()
+       .ForMember(dest => dest.CityId1, opt => opt.MapFrom(src => src.CityId1))
+       .ForMember(dest => dest.CityId2, opt => opt.MapFrom(src => src.CityId2));
+        CreateMap<Customer, CustomersList>()
+            .ForMember(dest => dest.City1, opt => opt.MapFrom(src => src.City1))
+           .ForMember(dest => dest.City2, opt => opt.MapFrom(src => src.City2));
+
         CreateMap<Customer, CustomersListWithoutCity>();
     }
 }

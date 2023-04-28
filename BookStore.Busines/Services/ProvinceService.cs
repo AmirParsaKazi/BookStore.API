@@ -26,7 +26,6 @@ public class ProvinceService : IProvinceService
         _mapper = mapper;
     }
 
-
     public async Task<string?> CreatProvinceAsync(ProvinceCreate provinceCreate)
     {
         var mappedProvince = _mapper.Map<Province>(provinceCreate);
@@ -47,7 +46,6 @@ public class ProvinceService : IProvinceService
 
         return provinceId.ToString();
     }
-
 
     public async Task DeleteProvinceAsync(ProvinceDelete provinceDelete)
     {
